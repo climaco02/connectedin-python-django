@@ -9,7 +9,7 @@ class RegistrarUsuarioForm(forms.Form):
 	telefone = forms.CharField(required=True)
 	nome_empresa = forms.CharField(required=True)
 
-	def is_valid():
+	def is_valid(self):
 		valid = True
 		if not super(RegistrarUsuarioForm, self).is_valid():
 			self.adiciona_erro('Por favor, verifique os dados informados')
@@ -24,5 +24,5 @@ class RegistrarUsuarioForm(forms.Form):
 		return valid
 
 	def adiciona_erro(self, message):
-		erros = self._errors.setdefault(forms.forms.NON_FIELD_ERRORS, form.utils.ErrorsList())
+		erros = self._errors.setdefault(forms.forms.NON_FIELD_ERRORS, forms.utils.ErrorList())
 		erros.append(message)
